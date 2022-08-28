@@ -25,8 +25,8 @@ class DataIngestion:
 
             col_train = db['FlightFareTrain']
             col_test = db['FlightFareTest']
-            logging.info("Train Collection Created/Found!")
-            logging.info("Test Collection Created/Found!")
+            logging.info("Train Collection Created Found!")
+            logging.info("Test Collection Created Found!")
 
             cursor_train = col_train.find()
             cursor_test = col_test.find()
@@ -37,7 +37,7 @@ class DataIngestion:
             df_train = pd.DataFrame(mongo_docs_train, columns=["Airline", "Date_of_Journey", "Source", "Destination", "Route", "Dep_Time", "Arrival_Time", "Duration", "Total_Stops", "Additional_Info", "Price"])
             logging.info("Storing data into dataframe : df_train")
 
-            df_test = pd.DataFrame(mongo_docs_test, columns=["Airline", "Date_of_Journey", "Source", "Destination", "Route", "Dep_Time", "Arrival_Time", "Duration", "Total_Stops", "Additional_Info"])
+            df_test = pd.DataFrame(mongo_docs_test, columns=["Airline", "Date_of_Journey", "Source", "Destination", "Route", "Dep_Time", "Arrival_Time", "Duration", "Total_Stops", "Additional_Info", "Price"])
             logging.info("Storing data into dataframe : df_test")
 
 
@@ -67,7 +67,7 @@ class DataIngestion:
 
 
             logging.info(f"Data Ingestion artifact:[{data_ingestion_artifact}]")
-            return df_train, df_test, data_ingestion_artifact
+            return data_ingestion_artifact
 
         except Exception as e:
             raise FlightFareException(e)
@@ -76,7 +76,6 @@ class DataIngestion:
 
     def initiate_data_ingestion(self) -> DataIngestionArtifact:
         try:
-            self.get_train_test_data_from_mongodb()
             return self.get_train_test_data_from_mongodb()
 
         except Exception as e:

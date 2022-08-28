@@ -1,15 +1,15 @@
 from flask import Flask, request
-from premium.util.util import read_yaml_file, write_yaml_file
+from flightfare.util.util import read_yaml_file, write_yaml_file
 from matplotlib.style import context
-from premium.logger import logging
-from premium.exception import PremiumException
+from flightfare.logger import logging
+from flightfare.exception import FlightFareException
 import os, sys
 import json
-from premium.config.configuration import Configuration
-from premium.constant import CONFIG_DIR, get_current_time_stamp
-from premium.pipeline.pipeline import Pipeline
-from premium.entity.premium_predictor import PremiumPredictor, PremiumData
-from premium.logger import get_log_dataframe
+from flightfare.config.configuration import Configuration
+from flightfare.constant import CONFIG_DIR, get_current_time_stamp
+from flightfare.pipeline.pipeline import Pipeline
+from flightfare.entity.premium_predictor import PremiumPredictor, PremiumData
+from flightfare.logger import get_log_dataframe
 from flask import send_file, abort, render_template
 
 
@@ -131,7 +131,7 @@ def predict():
             return render_template('predict.html', context=context)
         return render_template("predict.html", context=context)
     except Exception as e:
-        return str(PremiumException(e,sys))
+        return str(FlightFareException(e,sys))
 
 @app.route('/saved_models', defaults={'req_path': 'saved_models'})
 @app.route('/saved_models/<path:req_path>')

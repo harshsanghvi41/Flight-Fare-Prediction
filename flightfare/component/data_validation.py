@@ -91,7 +91,6 @@ class DataValidation:
                 source_yaml_col_value = sorted(read_yaml_file(file_path = scheme_file_path)['domain_value']['Source'])
                 destination_yaml_col_value = sorted(read_yaml_file(file_path = scheme_file_path)['domain_value']['Destination'])
 
-
                 #checking values of "Airline", "Source" and "Destination" in train and test file
                 airline_val_train_df = sorted(train_df["Airline"].unique())
                 airline_val_test_df = sorted(test_df["Airline"].unique())
@@ -104,8 +103,11 @@ class DataValidation:
 
                 # checking whethere "Airline", "Source" and "Destination" columns having same values or not
                 if airline_val_train_df == airline_val_test_df == airline_yaml_col_value:
+                    logging.info("Airline Match")
                     if source_val_train_df == source_val_test_df == source_yaml_col_value:
+                        logging.info("Source Match")
                         if destination_val_train_df == destination_val_test_df == destination_yaml_col_value:
+                            logging.info("Destination Match")
                             validation_status = True
                             logging.info(f'Airline, Source and Destination column hvaing same values in Training, Testing and schema.yaml file.')
                 return validation_status
