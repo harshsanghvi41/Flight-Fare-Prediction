@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+from tkinter.tix import COLUMN
 
 def get_current_time_stamp():
     return f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
@@ -45,10 +46,21 @@ DATA_TRANSFORMATION_PREPROCESSED_OBJECT_FILE_NAME_KEY = "preprocessed_object_fil
 DATA_TRANSFORMATION_ARTIFACT_DIR = "data_transformation"
 
 
+COLUMN_AIRLINE = 'Airline'
+COLUMN_DATE_OF_JOURNEY = 'Date_of_Journey'
+COLUMN_DEP_TIME = 'Dep_Time'
+COLUMN_SOURCE = 'Source'
+COLUMN_DESTINATION = 'Destination'
+COLUMN_ROUTE = 'Route'
+COLUMN_DURATION = 'Duration'
+COLUMN_ARRIVAL_TIME = 'Arrival_Time'
+
+
 NUMERICAL_COLUMN_KEY = "numerical_columns"
 CATEGORICAL_COLUMN_KEY = "categorical_columns"
 TARGET_COLUMN_KEY = "target_column"
-
+ONE_CATEGORICAL_COLUMN_KEY = "one_categorical_column"
+TOTAL_CATEGORICAL_COLUMN_KEY = "total_categorical_columns"
 DATASET_SCHEMA_COLUMNS_KEY = "columns"
 
 

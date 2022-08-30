@@ -16,6 +16,11 @@ numerical_columns:
 
 categorical_columns:
   - Airline
+  - Source
+  - Destination
+
+total_categorical_columns:
+  - Airline
   - Date_of_Journey
   - Source
   - Destination
@@ -24,7 +29,9 @@ categorical_columns:
   - Arrival_Time
   - Duration
   - Total_Stops
-  - Additional_Info
+
+one_categorical_column:
+  - Total_Stops
 
 target_column: Price
 
